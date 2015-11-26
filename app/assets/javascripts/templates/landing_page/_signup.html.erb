@@ -1,0 +1,22 @@
+<section id="Signup">
+	<div class="row">
+		<div class="col-sm-12">
+			<p>Signup</p>
+			<form name="signup" novalidate ng-submit="submit_signup($event, signup.$invalid)" method="POST" action="users">
+				<input class="form-control" id="email_input" type="email" name="email" ng-model="email" ng-change="check_email(email)" placeholder="Email" required>
+				<div ng-show="signup.$submitted || signup.email.$touched">
+			      <span ng-show="signup.email.$error.required" id="email_required_error_message">Tell us your email.</span>
+			      <span ng-show="signup.email.$error.email" id="email_format_error_message">This is not a valid email.</span>
+			      <span ng-show="user_email_exists && !signup.email.$error.email && !signup.email.$error.required" id="email_exists_error_message">This email is already in use.</span>
+			    </div>
+				<input class="form-control" id="password_input" type="password" name="password" ng-model="password" placeholder="Password" ng-minlength="6" required/>
+				<div ng-show="signup.$submitted || signup.password.$touched">
+			      <span ng-show="signup.password.$error.required" id="password_required_error_message">Password required.</span>
+			      <span ng-show="signup.password.$error.minlength" id="password_minlength_error_message">Email must be a minimum of 6 characters</span>
+			    </div>
+				<input type="hidden" name="authenticity_token" value="{{$parent.authenticity_token[0]}}">
+				<input class="btn btn-primary pull-right" type="submit" value='Signup' />
+			</form>
+		</div>
+	</div>
+</section>
